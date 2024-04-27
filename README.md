@@ -27,6 +27,16 @@ The code retrieves data from the World Bank's Population Estimates and Projectio
 - **Age Dependency Ratio, Old:** Age dependency ratio, old, is the ratio of older dependents--people older than 64--to the working-age population--those ages 15-64. Data are shown as the proportion of dependents per 100 working-age population.every 100 working-age adults.
 - **Age Dependency Ratio, Young:** Age dependency ratio, young, is the ratio of younger dependents--people younger than 15--to the working-age population--those ages 15-64. Data are shown as the proportion of dependents per 100 working-age population.
 
+## Visualisation
+### Age dependency ratio (% of working-age population) in the Czech Republic
+![](https://github.com/hrosicka/CzechPopulationEstimation/blob/master/Doc/AgeDependencyRatioCZ.png)
+
+### Age dependency ratio in the Czech Republic, old
+![](https://github.com/hrosicka/CzechPopulationEstimation/blob/master/Doc/AgeDependencyRatioOldCZ.png)
+
+### Age dependency ratio in the Czech Republic, young 
+![](https://github.com/hrosicka/CzechPopulationEstimation/blob/master/Doc/AgeDependencyRatioYoungCZ.png)
+
 ## Additional Notes
 
 - The script assumes the data file (Population-EstimatesEXCEL.csv) is in the same directory as the script itself.
