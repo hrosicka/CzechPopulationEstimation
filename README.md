@@ -8,7 +8,8 @@ This script requires the following Python libraries:
 - matplotlib (for plotting)
 
 ## Data Source
-The code retrieves data from the World Bank's Population Estimates and Projections: ![](https://datacatalog.worldbank.org/search/dataset/0037655/Population-Estimates-and-Projections) dataset.
+The code retrieves data from the World Bank's Population Estimates and Projections:
+https://datacatalog.worldbank.org/search/dataset/0037655/Population-Estimates-and-Projections dataset.
 
 ## How to Use
 1. **Save the code:** Save this code as a Python file (e.g., age_dependency_ratio.py).
