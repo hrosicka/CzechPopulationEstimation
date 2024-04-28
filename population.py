@@ -71,14 +71,14 @@ def plot_sp_pop_dpnd_ol(df_czechia):
 
 def plot_sp_pop_dpnd_yg(df_czechia):
     """
-    Plots the youth dependency ratio (SP.POP.DPND.YG) for the Czech Republic from the provided DataFrame.
+    Plots the young dependency ratio (SP.POP.DPND.YG) for the Czech Republic from the provided DataFrame.
     SP.POP.DPND.YG = Age dependency ratio, young
     
     Args:
         df_czechia (pandas.DataFrame): A DataFrame containing data for the Czech Republic.
     """
 
-    # Extract data for plotting the youth dependency ratio
+    # Extract data for plotting the young dependency ratio
     x_sp_pop_dpnd_yg = df_czechia.index.to_numpy()
     y_sp_pop_dpnd_yg = df_czechia["SP.POP.DPND.YG"].to_numpy() 
 
@@ -92,7 +92,7 @@ def plot_sp_pop_dpnd_yg(df_czechia):
     ax.set_title("Age dependency ratio, young")
 
     # Add informative legend using Rectangle for aesthetics
-    text1 = "Youth dependency ratio shows how many < 15"
+    text1 = "Young dependency ratio shows how many < 15"
     text2 = "rely on every 100 working-age adults (15-64)."
     extra = Rectangle((0, 0), 1, 1, fc="w", fill=False, edgecolor='none', linewidth=0)
     plt.legend([extra, extra],[text1, text2], loc='lower left', title='Legend')
@@ -128,7 +128,7 @@ def main():
     # Generate plots for different dependency ratios
     plot_sp_pop_dpnd(df_czechia)        # Overall dependency ratio
     plot_sp_pop_dpnd_ol(df_czechia)     # Old-age dependency ratio
-    plot_sp_pop_dpnd_yg(df_czechia)     # Youth dependency ratio
+    plot_sp_pop_dpnd_yg(df_czechia)     # Young dependency ratio
 
 
 if __name__ == "__main__":
