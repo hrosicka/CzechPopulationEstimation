@@ -8,12 +8,13 @@ This script requires the following Python libraries:
 - matplotlib (for plotting)
 
 ## Data Source
-The code retrieves data from the World Bank's Population Estimates and Projections: ![](https://datacatalog.worldbank.org/search/dataset/0037655/Population-Estimates-and-Projections) dataset.
+The code retrieves data from the World Bank's Population Estimates and Projections:
+https://datacatalog.worldbank.org/search/dataset/0037655/Population-Estimates-and-Projections dataset.
 
 ## How to Use
-1. **Save the code:** Save this code as a Python file (e.g., age_dependency_ratio.py).
+1. **Save the code:** Save this code as a Python file (e.g.,*population.p*y).
 2. **Ensure libraries are installed:** Make sure you have pandas and matplotlib installed in your Python environment. You can install them using: pip install pandas matplotlib.
-3. **Run the script:** Execute the script from your terminal using python age_dependency_ratio.py.
+3. **Run the script:** Execute the script *population.py*.
 
 **The script will**
 - Read the population data for the Czech Republic.
