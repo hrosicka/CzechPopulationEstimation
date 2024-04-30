@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt                 # Import matplotlib for plotting
 from matplotlib.patches import Rectangle        # Import Rectangle for legend and description
 import numpy as np                              # Import numpy for numerical operations
 
-def annot_max(x,y, color, textcolor, ax=None):
+def annot_max(x,y, color, textcolor, desc, ax=None):
     """
     Annotates the maximum value in a data array (`y`) value on a Matplotlib plot (`ax`).
 
@@ -14,6 +14,7 @@ def annot_max(x,y, color, textcolor, ax=None):
         y (numpy.ndarray): The y-axis data array (corresponding values).
         color (str): The color for the annotation box and arrow.
         textcolor (str): The color for the annotation text.
+        desc (str): 
         ax (matplotlib.axes._axes.Axes, optional): The Matplotlib axes object for the plot.
             If not provided, the current axes (plt.gca()) is used.
 
@@ -28,7 +29,7 @@ def annot_max(x,y, color, textcolor, ax=None):
 
     # Format the annotation text including the year with the maximum value
     # and the corresponding age dependency ratio
-    text= "MAXIMUM IN YEAR {}\nAge Dependency Ratio {:.3f}".format(xmax, ymax)
+    text= "MAXIMUM IN YEAR  {}\n {}  {:.3f}".format(xmax, desc, ymax)
 
     # Check if an axes object (ax) is provided. If not, retrieve the current axes.
     if not ax:
@@ -51,8 +52,10 @@ def annot_max(x,y, color, textcolor, ax=None):
     ytext = ymax/100 + 0.25
 
     # Adjust the horizontal text position (xytext) based on the year (xmax)
-    if int(xmax) > 1990:
+    if int(xmax) > 1990 and ymax < 80:
         xytext = (0.9, ytext)  # Place text at the right side for better readability
+    elif int(xmax) > 1990 and ymax >= 80:
+        xytext = (0.9, ytext - 0.5)  # Place text at the right side for better readability
     else:
         xytext = (0.5, ytext)  # Center the text for years before 1991
 
@@ -60,7 +63,7 @@ def annot_max(x,y, color, textcolor, ax=None):
     ax.annotate(text, xy=(xmax, ymax), xytext=xytext, **kw)
 
 
-def annot_min(x,y, color, textcolor, ax=None):
+def annot_min(x,y, color, textcolor, desc, ax=None):
     """
     Annotates the minimum value in a data array (`y`) on a Matplotlib plot (`ax`).
 
@@ -84,7 +87,7 @@ def annot_min(x,y, color, textcolor, ax=None):
 
     # Format the annotation text including the year with the minimum value
     # and the corresponding age dependency ratio
-    text= "MINIMUM IN YEAR {}\nAge Dependency Ratio {:.3f}".format(xmin, ymin)
+    text= "MINIMUM IN YEAR  {}\n {}  {:.3f}".format(xmin, desc, ymin)
 
     # Check if an axes object (ax) is provided. If not, retrieve the current axes.
     if not ax:
@@ -146,8 +149,9 @@ def plot_sp_pop_dpnd(df_czechia):
     extra = Rectangle((0, 0), 1, 1, fc="w", fill=False, edgecolor='none', linewidth=0)
     plt.legend([extra, extra],[text1, text2], loc='lower left')
 
-    annot_max(x_sp_pop_dpnd, y_sp_pop_dpnd, "#1D0200", "white")
-    annot_min(x_sp_pop_dpnd, y_sp_pop_dpnd, "#5A1807", "white")
+    desc = "Age Dependency Ratio"
+    annot_max(x_sp_pop_dpnd, y_sp_pop_dpnd, "#1D0200", "white", desc)
+    annot_min(x_sp_pop_dpnd, y_sp_pop_dpnd, "#5A1807", "white", desc)
 
     # Display the plot
     plt.show()
@@ -182,8 +186,9 @@ def plot_sp_pop_dpnd_ol(df_czechia):
     extra = Rectangle((0, 0), 1, 1, fc="w", fill=False, edgecolor='none', linewidth=0)
     plt.legend([extra, extra],[text1, text2], loc='lower left')
 
-    annot_max(x_sp_pop_dpnd_ol, y_sp_pop_dpnd_ol, "#420039", "white")
-    annot_min(x_sp_pop_dpnd_ol, y_sp_pop_dpnd_ol, "#25171A", "white")
+    desc = "Age Dependency Ratio"
+    annot_max(x_sp_pop_dpnd_ol, y_sp_pop_dpnd_ol, "#420039", "white", desc)
+    annot_min(x_sp_pop_dpnd_ol, y_sp_pop_dpnd_ol, "#25171A", "white", desc)
 
 
     # Display the plot
@@ -205,7 +210,7 @@ def plot_sp_pop_dpnd_yg(df_czechia):
 
     # Create the plot
     fig, ax = plt.subplots()
-    ax.stackplot(x_sp_pop_dpnd_yg, y_sp_pop_dpnd_yg, colors=["#7B904B"])
+    ax.stackplot(x_sp_pop_dpnd_yg, y_sp_pop_dpnd_yg, colors=["#768948"])
  
     # Set plot limits and labels
     ax.set_xlim(min(x_sp_pop_dpnd_yg), max(x_sp_pop_dpnd_yg))
@@ -219,8 +224,81 @@ def plot_sp_pop_dpnd_yg(df_czechia):
     extra = Rectangle((0, 0), 1, 1, fc="w", fill=False, edgecolor='none', linewidth=0)
     plt.legend([extra, extra],[text1, text2], loc='lower left')
 
-    annot_max(x_sp_pop_dpnd_yg, y_sp_pop_dpnd_yg, "#273B09", "white")
-    annot_min(x_sp_pop_dpnd_yg, y_sp_pop_dpnd_yg, "#393E41", "white")
+    desc = "Age Dependency Ratio"
+    annot_max(x_sp_pop_dpnd_yg, y_sp_pop_dpnd_yg, "#1E2F23", "white", desc)
+    annot_min(x_sp_pop_dpnd_yg, y_sp_pop_dpnd_yg, "#34623F", "white", desc)
+
+    # Display the plot
+    plt.show()
+
+
+def plot_sp_rur_totl_zs(df_czechia):
+    """
+    This function plots the rural population (SP.RUR.TOTL.ZS) of the Czech Republic as a percentage
+    of the total population over time.
+    Args:
+        df_czechia (pandas.DataFrame): A DataFrame containing data for the Czech Republic.
+    """
+
+    # Extract data for plotting 
+    x_sp_pop_totl = df_czechia.index.to_numpy()
+    y_sp_pop_totl = df_czechia["SP.RUR.TOTL.ZS"].to_numpy() 
+
+    # Create the plot
+    fig, ax = plt.subplots()
+    ax.stackplot(x_sp_pop_totl, y_sp_pop_totl, colors=["#C8963E"])
+ 
+    # Set plot limits and labels
+    ax.set_xlim(min(x_sp_pop_totl), max(x_sp_pop_totl))
+    ax.set_xticks([min(x_sp_pop_totl), '1975', '1990', '2005', '2020', '2035', max(x_sp_pop_totl)])
+    ax.set_ylim(0, 100)
+    ax.set_title("Rural population (% Of Total Population)")
+
+    # Add informative legend using Rectangle for aesthetics
+    text1 = "Rural population refers to people living in rural areas"
+    text2 = "as defined by national statistical offices."
+    extra = Rectangle((0, 0), 1, 1, fc="w", fill=False, edgecolor='none', linewidth=0)
+    plt.legend([extra, extra],[text1, text2], loc='lower left')
+
+    desc = "Rural Population [%]"
+    annot_max(x_sp_pop_totl, y_sp_pop_totl, "#573D1C", "white", desc)
+    annot_min(x_sp_pop_totl, y_sp_pop_totl, "#D1462F", "white", desc)
+
+    # Display the plot
+    plt.show()
+
+
+def plot_sp_urb_totl_in_zs(df_czechia):
+    """
+    This function plots the urban population (SP.URB.TOTL.IN.ZS) of the Czech Republic as a percentage
+    of the total population over time.
+    Args:
+        df_czechia (pandas.DataFrame): A DataFrame containing data for the Czech Republic.
+    """
+
+    # Extract data for plotting 
+    x_sp_pop_totl = df_czechia.index.to_numpy()
+    y_sp_pop_totl = df_czechia["SP.URB.TOTL.IN.ZS"].to_numpy() 
+
+    # Create the plot
+    fig, ax = plt.subplots()
+    ax.stackplot(x_sp_pop_totl, y_sp_pop_totl, colors=["#BFC0C0"])
+ 
+    # Set plot limits and labels
+    ax.set_xlim(min(x_sp_pop_totl), max(x_sp_pop_totl))
+    ax.set_xticks([min(x_sp_pop_totl), '1975', '1990', '2005', '2020', '2035', max(x_sp_pop_totl)])
+    ax.set_ylim(0, 100)
+    ax.set_title("Urban population (% Of Total Population)")
+
+    # Add informative legend using Rectangle for aesthetics
+    text1 = "Urban population refers to people living in urban areas"
+    text2 = "as defined by national statistical offices."
+    extra = Rectangle((0, 0), 1, 1, fc="w", fill=False, edgecolor='none', linewidth=0)
+    plt.legend([extra, extra],[text1, text2], loc='lower left')
+
+    desc = "Urban Population [%]"
+    annot_max(x_sp_pop_totl, y_sp_pop_totl, "#2D3142", "white", desc)
+    annot_min(x_sp_pop_totl, y_sp_pop_totl, "#4F5D75", "white", desc)
 
     # Display the plot
     plt.show()
@@ -250,10 +328,12 @@ def main():
     # Transpose the DataFrame for easier access (optional, depending on data structure)
     df_czechia = df_czechia.T
 
-    # Generate plots for different dependency ratios
+    # Generate plots
     plot_sp_pop_dpnd(df_czechia)        # Overall dependency ratio
     plot_sp_pop_dpnd_ol(df_czechia)     # Old-age dependency ratio
     plot_sp_pop_dpnd_yg(df_czechia)     # Young dependency ratio
+    plot_sp_rur_totl_zs(df_czechia)     # Rural population (% of total population)
+    plot_sp_urb_totl_in_zs(df_czechia)  # Urban population (% of total population)
 
 
 if __name__ == "__main__":
