@@ -1,4 +1,14 @@
 # Population Projections Czechia
+
+![Population Projections](https://img.shields.io/badge/population-projections-blue)
+![Aging Like Fine Wine](https://img.shields.io/badge/CZ%20population-aging%20like%20fine%20wine-yellow)
+![Urbanization](https://img.shields.io/badge/urbanization-city%20vibes-9cf)
+![Rural Exodus](https://img.shields.io/badge/rural-population%20shrinking-brown)
+![Powered by pandas](https://img.shields.io/badge/powered%20by-pandas-1e88e5?logo=pandas)
+![Matplotlib Magic](https://img.shields.io/badge/made%20with-matplotlib-purple?logo=matplotlib)
+![2050 Ready](https://img.shields.io/badge/year-2050%20ready-brightgreen)
+![MIT License](https://img.shields.io/badge/license-MIT-green)
+
 This Python code visualizes age dependency ratios for the Czech Republic, separating them into overall, young, and old age dependency ratios.  This can be helpful for understanding population trends and planning for social services.
 
 ## User Guide
