@@ -72,4 +72,9 @@ In the Czech Republic, the population is aging. According to the World Bank, the
 The Czech Republic, like many countries around the world, is experiencing a shift in population from rural to urban areas. This trend is expected to continue in the coming years, and it will bring with it a number of challenges that the Czech Republic will need to address.
 
 - **One challenge is the increased demand for housing and infrastructure in cities.** As more people move to cities, there will be a greater need for apartments, houses, and other forms of housing. This could lead to rising housing costs and make it difficult for some people to afford to live in cities. Additionally, cities will need to invest in infrastructure such as transportation, schools, and hospitals to accommodate the growing population.
-  
+
+## Author
+Lovingly crafted by [Hanka Robovska](https://github.com/hrosicka)
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details. Free to use, modify, and distribute as needed.
